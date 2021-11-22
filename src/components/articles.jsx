@@ -2,18 +2,18 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { getArticles } from "../utils/api";
 
-const Articles = () => {
+const Articles = ({topic}) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    getArticles()
+    getArticles(topic)
       .then((articles) => {
         setArticles(articles);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [topic]);
 
   return (
     <main className="articles">

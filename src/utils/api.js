@@ -11,7 +11,14 @@ export const getTopics = () => {
   };
 
 export const getArticles = () => {
-  return newsApi.get("/articles/").then((res) => {
+  return newsApi.get(`/articles`).then((res) => {
     return res.data.articles;
   });
 };
+
+export const getArticlesByTopic = (topic) => {
+    return newsApi.get(`/articles?topic=${topic}`).then((res) => {
+      return res.data.articles;
+    });
+  };
+  

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { getTopics } from "../utils/api";
 
-const Nav = () => {
-  const [topics, setTopics] = useState([]);
+const Nav = ({topic, setTopic}) => {
+    console.log(setTopic)
+    const [topics, setTopics] = useState([]);
 
   useEffect(() => {
     getTopics()
@@ -20,8 +21,9 @@ const Nav = () => {
     <div>
       <nav className="nav">
         {topics.map((topic) => {
+          setTopic(topic.slug)
           return (
-            <Link key={topic.slug} to={`/topics/${topic.slug}`}>
+            <Link key={topic.slug} to={`/articles/${topic.slug}`}>
               {topic.slug}
             </Link>
           );
