@@ -10,8 +10,8 @@ export const getTopics = () => {
     });
   };
 
-export const getArticles = () => {
-  return newsApi.get("/articles").then((res) => {
+export const getArticle = () => {
+  return newsApi.get("/articles/:article_id").then((res) => {
     return res.data.articles;
   });
 };

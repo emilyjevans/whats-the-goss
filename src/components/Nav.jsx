@@ -8,26 +8,25 @@ const Nav = () => {
 
   useEffect(() => {
     getTopics()
-      .then((topics) => {setTopics(topics)})
+      .then((topics) => {
+        setTopics(topics);
+      })
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
 
   return (
     <div>
       <nav className="nav">
-        {topics.map((topic)=>{
-            return (
-                <Link key={topic.topic_slug} to={`/topics/${topic.topic_slug}`}
-            )
+        {topics.map((topic) => {
+          console.log(topic);
+          return (
+            <Link key={topic.slug} to={`/topics/${topic.slug}`}>
+              {topic.slug}
+            </Link>
+          );
         })}
-
-
-
-        <Link to="/topics/">Topic</Link>
-        <Link to="/topics">Topic</Link>
-        <Link to="/topics">Topic</Link>
       </nav>
     </div>
   );
