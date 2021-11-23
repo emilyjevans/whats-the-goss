@@ -20,7 +20,7 @@ function App() {
           path="/:topic"
           element={<Articles topic={topic} setTopic={setTopic} />}
         />
-        <Route path="/postComment" element={<PostComment />} />
+        <Route path="/articles/:article_id/postComment" element={<PostComment />} />
         <Route path="/articles/:article_id" element ={<SingleArticle/>}/>
       </Routes>
     </div>

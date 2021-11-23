@@ -16,7 +16,7 @@ const SingleArticle = () => {
   );
 
   return (
-    <div>
+    <main>
       {console.log(article)}
       <h2>{article.title}</h2>
       <h3>{article.author}</h3>
@@ -25,11 +25,11 @@ const SingleArticle = () => {
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
       <p>Comment count: {article.comment_count}</p>
-      <Link to={`/postComment`} article_id={article.article_id}>
+      <Link to={`/articles/${article.article_id}/postComment`}>
         <button>Post a comment</button>
       </Link>
       <CommentSection article_id={article_id} />
-    </div>
+    </main>
   );
 };
 

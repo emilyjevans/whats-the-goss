@@ -27,14 +27,11 @@ const Articles = () => {
         {articles.map((article) => {
           return (
             <section key={article.article_id}>
-              <Link to={`/articles/${article.article_id}`}>
+              <Link className="link" to={`/articles/${article.article_id}`}>
                 {article.title}
               </Link>
-              <p>Topic: {article.topic}</p>
-              <p>By: {article.author}</p>
-              <p>Created: {article.created_at}</p>
-              <p>Comments: {article.comment_count}</p>
-              <p>Votes: {article.votes}</p>
+              <p>Author: {article.author} Created at: {article.created_at}</p>
+              <p>Comments: {article.comment_count} Votes: {article.votes}</p>
             </section>
           );
         })}
