@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Articles from "./components/articles";
 import PostComment from "./components/postComment";
 import Nav from "./components/Nav.jsx";
+import SingleArticle from "./components/SingleArticle";
 import { useState } from "react";
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
         {/* <Route path="/" element={<Home />} /> */}
         <Route path="/articles" element={<Articles topic={null} />} />
         <Route
-          path="/articles/:topic"
+          path="/:topic"
           element={<Articles topic={topic} setTopic={setTopic} />}
         />
         <Route path="/postComment" element={<PostComment />} />
+        <Route path="/articles/:article_id" element ={<SingleArticle/>}/>
       </Routes>
     </div>
   );
