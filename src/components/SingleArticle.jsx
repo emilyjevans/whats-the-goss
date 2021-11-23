@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../utils/api";
+import CommentSection from "./CommentSection";
 
 const SingleArticle = () => {
   let { article_id } = useParams();
@@ -24,7 +25,9 @@ const SingleArticle = () => {
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
       <p>Comment count: {article.comment_count}</p>
+      <CommentSection article_id = {article_id}/>
     </div>
+    
   );
 };
 
