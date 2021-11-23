@@ -7,15 +7,18 @@ import Nav from "./components/Nav.jsx";
 import { useState } from "react";
 
 function App() {
-  const [topic, setTopic] = useState([])
+  const [topic, setTopic] = useState([]);
   return (
     <div className="App">
       <header className="App-header">What's The Goss</header>
-      <Nav setTopic={setTopic}/>
-      <Articles topic={topic} setTopic={setTopic}/>
+      <Nav setTopic={setTopic} />
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles" element={<Articles topic={null} />} />
+        <Route
+          path="/articles/:topic"
+          element={<Articles topic={topic} setTopic={setTopic} />}
+        />
         <Route path="/postComment" element={<PostComment />} />
       </Routes>
     </div>

@@ -5,20 +5,18 @@ const newsApi = axios.create({
 });
 
 export const getTopics = () => {
-    return newsApi.get("/topics").then((res) => {
-      return res.data.topics;
-    });
-  };
+  return newsApi.get("/topics").then((res) => {
+    return res.data.topics;
+  });
+};
 
-export const getArticles = () => {
+export const getArticles = (topic) => {
+  if (topic) {
+    return newsApi.get(`/articles?topic=${topic}`).then((res) => {
+      return res.data.articles;
+    });
+  }
   return newsApi.get(`/articles`).then((res) => {
     return res.data.articles;
   });
 };
-
-export const getArticlesByTopic = (topic) => {
-    return newsApi.get(`/articles?topic=${topic}`).then((res) => {
-      return res.data.articles;
-    });
-  };
-  
