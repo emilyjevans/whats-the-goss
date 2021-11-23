@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCommentsByArticle } from "../utils/api";
+import { getCommentsByArticle, deleteComment } from "../utils/api";
 
 const CommentSection = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -9,13 +9,12 @@ const CommentSection = ({ article_id }) => {
     getCommentsByArticle(article_id)
       .then((comments) => {
         setComments(comments);
-        console.log(comments);
         setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [article_id]);
+  }, [article_id, comments]);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -31,6 +30,15 @@ const CommentSection = ({ article_id }) => {
               <p>{comment.body}</p>
               <p>Created at: {comment.created_at}</p>
               <p>Votes: {comment.votes}</p>
+              <button
+                onClick={() => {
+                  deleteComment(comment.comment_id).then(() => {
+                    // do I need anything here?
+                  });
+                }}
+              >
+                Delete comment
+              </button>
             </li>
           );
         })}

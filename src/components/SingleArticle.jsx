@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getSingleArticle } from "../utils/api";
 import CommentSection from "./CommentSection";
 
@@ -25,9 +25,11 @@ const SingleArticle = () => {
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
       <p>Comment count: {article.comment_count}</p>
-      <CommentSection article_id = {article_id}/>
+      <Link to={`/postComment`} article_id={article.article_id}>
+        <button>Post a comment</button>
+      </Link>
+      <CommentSection article_id={article_id} />
     </div>
-    
   );
 };
 

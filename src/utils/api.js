@@ -28,7 +28,23 @@ export const getSingleArticle = (articleId) => {
 };
 
 export const getCommentsByArticle = (articleId) => {
-  return newsApi.get(`/articles/${articleId}/comments`).then((res)=> {
+  return newsApi.get(`/articles/${articleId}/comments`).then((res) => {
     return res.data.comments;
-  })
-}
+  });
+};
+
+export const deleteComment = (commentId) => {
+  return newsApi.delete(`/comments/${commentId}`).then((res) => {
+    return res.status;
+  });
+};
+
+export const sendComment = (articleId, username, comment) => {
+  const commentObj = { username: username, body: comment };
+  return newsApi.post(
+    `/articles/${articleId}/comments`,
+    commentObj.then((res) => {
+      return res.status;
+    })
+  );
+};

@@ -20,8 +20,7 @@
 } */
 
 .nav {
-  border-color: blue;
-  border-width: 1px;
+  border: solid blue 1px;
   grid-area: nav;
   padding: 1pc;
 }
