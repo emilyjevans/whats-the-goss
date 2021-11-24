@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { sendComment } from "../utils/api";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 
 const PostComment = () => {
   const [newComment, setNewComment] = useState("");
-  const username = "jessjelly";
+  const { user } = useContext(UserContext);
   let { article_id } = useParams();
 
   useEffect(() => {}, [article_id, newComment]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendComment(article_id, username, newComment).catch((err) => {
+    sendComment(article_id, user.username, newComment).catch((err) => {
       console.dir(err);
     });
   };
@@ -20,8 +21,7 @@ const PostComment = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
-          <input type="text" name="username" />
+          Username: {user.username}
         </label>
         <br />
         <label>

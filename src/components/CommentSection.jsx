@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { getCommentsByArticle, deleteComment } from "../utils/api";
+import { UserContext } from "../contexts/UserContext";
 
 const CommentSection = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getCommentsByArticle(article_id)
@@ -31,6 +33,7 @@ const CommentSection = ({ article_id }) => {
               <p>Created at: {comment.created_at}</p>
               <p>Votes: {comment.votes}</p>
               <button
+                disabled={!(comment.author === user.username)}
                 onClick={() => {
                   deleteComment(comment.comment_id).then(() => {
                     // do I need anything here?
