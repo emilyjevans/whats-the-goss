@@ -5,6 +5,7 @@ import Articles from "./components/articles";
 import Nav from "./components/Nav.jsx";
 import LoginForm from "./components/LoginForm";
 import SingleArticle from "./components/SingleArticle";
+import UserLoggedIn from "./components/UserLoggedIn";
 import { useContext, useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 
@@ -21,7 +22,10 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
       <div className="App">
-        <header className="App-header">What's The Goss</header>
+        <header className="App-header">
+          <h1>What's The Goss</h1>
+          <UserLoggedIn />{" "}
+        </header>
         <RequireLogin>
           <Nav setTopic={setTopic} />
           <Routes>
