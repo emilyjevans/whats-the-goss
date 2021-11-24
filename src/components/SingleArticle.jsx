@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle, incVotes } from "../utils/api";
 import CommentSection from "./CommentSection";
-import PostComment  from "./postComment";
+import PostComment from "./postComment";
+import { UserContext } from "../contexts/UserContext";
 
 const SingleArticle = () => {
   let { article_id } = useParams();
   const [article, setArticle] = useState({});
-  const [sentVotes, setSentVotes] = useState(0)
-  const [err, setErr] = useState(null)
+  const [sentVotes, setSentVotes] = useState(0);
+  const [err, setErr] = useState(null);
+  const { user } = useContext(UserContext);
 
   useEffect(
     () =>
@@ -18,43 +20,47 @@ const SingleArticle = () => {
     [article_id]
   );
 
+  const CommentSectionExpand = ({ children }) => {
+    const [isOpen, setIsOpen] = useState(false);
 
-  const CommentSectionExpand = ({children}) => {
-    const [isOpen, setIsOpen] = useState(false)
-
-    const toggleOpen = () => setIsOpen((currOpen) => !currOpen)
-
-    return (
-      <div>
-        <button onClick={toggleOpen}>{isOpen ? 'Hide comments' :'View comments'}</button>
-        {isOpen && children}
-      </div>
-    )
-  }
-
-  const PostCommentExpand = ({children}) => {
-    const [isOpen, setIsOpen] = useState(false)
-
-    const toggleOpen = () => setIsOpen((currOpen) => !currOpen)
+    const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
 
     return (
       <div>
-        <button onClick={toggleOpen}>{isOpen ? 'Hide' :'Post a comment'}</button>
+        <button onClick={toggleOpen}>
+          {isOpen ? "Hide comments" : "View comments"}
+        </button>
         {isOpen && children}
       </div>
-    )
-  }
+    );
+  };
 
-  const clickHandle = (e) => {e.preventDefault();
-    setSentVotes((currCount)=>currCount+1);
+  const PostCommentExpand = ({ children }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
+
+    return (
+      <div>
+        <button onClick={toggleOpen}>
+          {isOpen ? "Hide" : "Post a comment"}
+        </button>
+        {isOpen && children}
+      </div>
+    );
+  };
+
+  const clickHandle = (e) => {
+    e.preventDefault();
+    setSentVotes((currCount) => currCount + 1);
     setErr(null);
-    incVotes(article_id).catch((err)=> {
-      setSentVotes((currCount)=>currCount-1)
-      setErr('Something went wrong, please try again')
-    })
-  }
+    incVotes(article_id).catch((err) => {
+      setSentVotes((currCount) => currCount - 1);
+      setErr("Something went wrong, please try again");
+    });
+  };
 
-  if (err) return <p>{err}</p>
+  if (err) return <p>{err}</p>;
 
   return (
     <main>
@@ -64,14 +70,16 @@ const SingleArticle = () => {
       <p>Topic: {article.topic}</p>
       <p>{article.body}</p>
       <p>Created at: {article.created_at}</p>
-      <p>Kudos: {article.votes+sentVotes}</p>
-      <button onClick={clickHandle}>Add kudos</button>
+      <p>Kudos: {article.votes + sentVotes}</p>
+      <button disabled={article.author === user.username} onClick={clickHandle}>
+        Add kudos
+      </button>
       <p>Comment count: {article.comment_count}</p>
       <PostCommentExpand>
-      <PostComment/>
+        <PostComment />
       </PostCommentExpand>
       <CommentSectionExpand>
-      <CommentSection article_id={article_id} />
+        <CommentSection article_id={article_id} />
       </CommentSectionExpand>
     </main>
   );

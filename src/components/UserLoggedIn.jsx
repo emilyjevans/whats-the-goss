@@ -6,7 +6,7 @@ const UserLoggedIn = () => {
   if (!user) {
     return <div>Please log in</div>;
   }
-  return <div>You are logged in as: {user.username}</div>;
+  return <div className="loginBox">You are logged in as: {user.username}</div>;
 };
 
 export default UserLoggedIn;

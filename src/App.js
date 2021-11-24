@@ -23,8 +23,7 @@ function App() {
     <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
       <div className="App">
         <header className="App-header">
-          <h1>What's The Goss</h1>
-          <UserLoggedIn />{" "}
+          <h1>What's The Goss</h1> <UserLoggedIn />{" "}
         </header>
         <RequireLogin>
           <Nav setTopic={setTopic} />
