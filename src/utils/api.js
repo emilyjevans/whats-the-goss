@@ -41,9 +41,11 @@ export const deleteComment = (commentId) => {
 
 export const sendComment = (articleId, username, comment) => {
   const commentObj = { "username": username, "body": comment };
+  console.log(commentObj, "<<<< sending this")
   return newsApi.post(
     `/articles/${articleId}/comments`,
     commentObj).then((res) => {
-      return res.status;
+      console.log(res)
+      return res.status
     });
 };

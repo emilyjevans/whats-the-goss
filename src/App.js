@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 // import Home from "./components/home";
 import Articles from "./components/articles";
-import PostComment from "./components/postComment";
 import Nav from "./components/Nav.jsx";
 import SingleArticle from "./components/SingleArticle";
 import { useState } from "react";
@@ -20,7 +19,7 @@ function App() {
           path="/:topic"
           element={<Articles topic={topic} setTopic={setTopic} />}
         />
-        <Route path="/articles/:article_id/postComment" element={<PostComment />} />
+        {/* <Route path="/articles/:article_id/postComment" element={<PostComment />} /> */}
         <Route path="/articles/:article_id" element ={<SingleArticle/>}/>
       </Routes>
     </div>

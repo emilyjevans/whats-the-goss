@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../utils/api";
 import CommentSection from "./CommentSection";
+import PostComment  from "./postComment";
 
 const SingleArticle = () => {
   let { article_id } = useParams();
@@ -15,6 +16,34 @@ const SingleArticle = () => {
     [article_id]
   );
 
+
+  const CommentSectionExpand = ({children}) => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggleOpen = () => setIsOpen((currOpen) => !currOpen)
+
+    return (
+      <div>
+        <button onClick={toggleOpen}>{isOpen ? 'Hide comments' :'View comments'}</button>
+        {isOpen && children}
+      </div>
+    )
+  }
+
+  const PostCommentExpand = ({children}) => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggleOpen = () => setIsOpen((currOpen) => !currOpen)
+
+    return (
+      <div>
+        <button onClick={toggleOpen}>{isOpen ? 'Hide' :'Post a comment'}</button>
+        {isOpen && children}
+      </div>
+    )
+  }
+
+
   return (
     <main>
       {console.log(article)}
@@ -25,10 +54,12 @@ const SingleArticle = () => {
       <p>Created at: {article.created_at}</p>
       <p>Votes: {article.votes}</p>
       <p>Comment count: {article.comment_count}</p>
-      <Link to={`/articles/${article.article_id}/postComment`}>
-        <button>Post a comment</button>
-      </Link>
+      <PostCommentExpand>
+      <PostComment/>
+      </PostCommentExpand>
+      <CommentSectionExpand>
       <CommentSection article_id={article_id} />
+      </CommentSectionExpand>
     </main>
   );
 };
