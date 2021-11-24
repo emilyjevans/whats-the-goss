@@ -31,13 +31,11 @@ const CommentSection = ({ article_id }) => {
               <h4>{comment.author}</h4>
               <p>{comment.body}</p>
               <p>Created at: {comment.created_at}</p>
-              <p>Votes: {comment.votes}</p>
+              <p>Kudos: {comment.votes}</p>
               <button
                 disabled={!(comment.author === user.username)}
                 onClick={() => {
-                  deleteComment(comment.comment_id).then(() => {
-                    // do I need anything here?
-                  });
+                  deleteComment(comment.comment_id).then(() => {});
                 }}
               >
                 Delete comment

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleArticle } from "../utils/api";
+import { getSingleArticle, incVotes } from "../utils/api";
 import CommentSection from "./CommentSection";
 import PostComment  from "./postComment";
 
 const SingleArticle = () => {
   let { article_id } = useParams();
   const [article, setArticle] = useState({});
+  const [sentVotes, setSentVotes] = useState(0)
+  const [err, setErr] = useState(null)
 
   useEffect(
     () =>
@@ -43,6 +45,16 @@ const SingleArticle = () => {
     )
   }
 
+  const clickHandle = (e) => {e.preventDefault();
+    setSentVotes((currCount)=>currCount+1);
+    setErr(null);
+    incVotes(article_id).catch((err)=> {
+      setSentVotes((currCount)=>currCount-1)
+      setErr('Something went wrong, please try again')
+    })
+  }
+
+  if (err) return <p>{err}</p>
 
   return (
     <main>
@@ -52,7 +64,8 @@ const SingleArticle = () => {
       <p>Topic: {article.topic}</p>
       <p>{article.body}</p>
       <p>Created at: {article.created_at}</p>
-      <p>Votes: {article.votes}</p>
+      <p>Kudos: {article.votes+sentVotes}</p>
+      <button onClick={clickHandle}>Add kudos</button>
       <p>Comment count: {article.comment_count}</p>
       <PostCommentExpand>
       <PostComment/>

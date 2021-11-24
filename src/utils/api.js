@@ -40,12 +40,20 @@ export const deleteComment = (commentId) => {
 };
 
 export const sendComment = (articleId, username, comment) => {
-  const commentObj = { "username": username, "body": comment };
-  console.log(commentObj, "<<<< sending this")
-  return newsApi.post(
-    `/articles/${articleId}/comments`,
-    commentObj).then((res) => {
-      console.log(res)
-      return res.status
+  const commentObj = { username: username, body: comment };
+  console.log(commentObj, "<<<< sending this");
+  return newsApi
+    .post(`/articles/${articleId}/comments`, commentObj)
+    .then((res) => {
+      console.log(res);
+      return res.status;
     });
+};
+
+export const incVotes = (articleId) => {
+  const votesObj = { inc_votes: 1 };
+  return newsApi.patch(`/articles/${articleId}`, votesObj).then((res) => {
+    console.log(res);
+    return res.status;
+  });
 };
