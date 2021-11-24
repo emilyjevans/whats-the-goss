@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { getTopics } from "../utils/api";
 
-const Nav = ({ topic, setTopic }) => {
+const Nav = () => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -19,9 +19,10 @@ const Nav = ({ topic, setTopic }) => {
   return (
     <nav className="nav">
       {topics.map((topic) => {
+        const topicSlug = topic.slug[0].toUpperCase()+topic.slug.substring(1)
         return (
-          <Link className="link" key={topic.slug} to={`/${topic.slug}`}>
-            {topic.slug}
+          <Link className="nav__link" key={topic.slug} to={`/${topic.slug}`}>
+            {topicSlug}
           </Link>
         );
       })}

@@ -15,14 +15,14 @@ const LoginForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:{" "}
-          <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <input type="submit" value="Submit" />
+        <input
+          type="text"
+          placeholder="Enter username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <br />
+        <input type="submit" value="Log in" />
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 // import Home from "./components/LoginForm";
-import Articles from "./components/articles";
+import Articles from "./components/Articles";
 import Nav from "./components/Nav.jsx";
 import LoginForm from "./components/LoginForm";
 import SingleArticle from "./components/SingleArticle";

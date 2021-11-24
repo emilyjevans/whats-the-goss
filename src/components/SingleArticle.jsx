@@ -4,6 +4,7 @@ import { getSingleArticle, incVotes } from "../utils/api";
 import CommentSection from "./CommentSection";
 import PostComment from "./postComment";
 import { UserContext } from "../contexts/UserContext";
+import timeSince from "../utils/timeSince";
 
 const SingleArticle = () => {
   let { article_id } = useParams();
@@ -62,14 +63,16 @@ const SingleArticle = () => {
 
   if (err) return <p>{err}</p>;
 
+  let d = new Date(article.created_at);
+  let timeLabel = timeSince(d);
+
   return (
     <main>
       {console.log(article)}
       <h2>{article.title}</h2>
-      <h3>{article.author}</h3>
-      <p>Topic: {article.topic}</p>
+      <p>{article.topic}</p>
+      <h3>Created by {article.author} {timeLabel} ago</h3>
       <p>{article.body}</p>
-      <p>Created at: {article.created_at}</p>
       <p>Kudos: {article.votes + sentVotes}</p>
       <button disabled={article.author === user.username} onClick={clickHandle}>
         Add kudos

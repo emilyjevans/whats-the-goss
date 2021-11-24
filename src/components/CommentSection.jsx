@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { getCommentsByArticle, deleteComment } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
+import timeSince from "../utils/timeSince";
 
 const CommentSection = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -21,16 +22,19 @@ const CommentSection = ({ article_id }) => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
+
   return (
     <div>
       <h3>Comments</h3>
       <section>
         {comments.map((comment) => {
+            let d = new Date(comment.created_at);
+            let timeLabel = timeSince(d);
           return (
             <li key={comment.comment_id}>
               <h4>{comment.author}</h4>
               <p>{comment.body}</p>
-              <p>Created at: {comment.created_at}</p>
+              <p>Created {timeLabel} ago</p>
               <p>Kudos: {comment.votes}</p>
               <button
                 disabled={!(comment.author === user.username)}

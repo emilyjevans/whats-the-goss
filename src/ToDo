@@ -3,4 +3,13 @@ Prevent deleting comments if you're not the user x
 Add logged in user in the corner x
 Add voting functionality x
 Disable voting on your own article/comment x
-Only one kudos 
+Only one kudos allowed
+Log out button 
+Combine comment count and view comments into one button
+Combine kudos count and add kudos into one button 
+
+Add new user endpoint
+Add increase votes on comment endpoint 
+
+Add hover for navbar 
+
