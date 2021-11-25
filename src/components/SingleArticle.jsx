@@ -10,6 +10,7 @@ const SingleArticle = () => {
   let { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [sentVotes, setSentVotes] = useState(0);
+  const [isLoading, setIsLoading] = useState(true)
   const [err, setErr] = useState(null);
   const { user } = useContext(UserContext);
 
@@ -17,6 +18,7 @@ const SingleArticle = () => {
     () =>
       getSingleArticle(article_id).then((article) => {
         setArticle(article);
+        setIsLoading(false);
       }),
     [article_id]
   );
@@ -62,6 +64,8 @@ const SingleArticle = () => {
   };
 
   if (err) return <p>{err}</p>;
+
+  if (isLoading) return <p>Loading...</p>
 
   let d = new Date(article.created_at);
   let timeLabel = timeSince(d);

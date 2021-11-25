@@ -37,7 +37,7 @@ const CommentSection = ({ article_id }) => {
               <p>
                 Created <b>{timeLabel} ago</b>
               </p>
-              <p>Kudos: {comment.votes}</p>
+              <p>Kudos: <b>{comment.votes}</b></p>
               <button
                 disabled={!(comment.author === user.username)}
                 onClick={() => {

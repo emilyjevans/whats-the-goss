@@ -14,6 +14,7 @@ const LoginForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <label>Please enter your username to get started</label>
         <input
           type="text"
           placeholder="Enter username"

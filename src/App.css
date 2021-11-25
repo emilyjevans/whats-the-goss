@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @prim: #53e3a6;
 
-
 .App {
   text-align: left;
   min-height: 100vh;
@@ -32,7 +31,7 @@
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   line-height: 1.5;
-  background-color: #72195a;
+  background-color: #4c1036;
   color: white;
 }
 
@@ -41,7 +40,18 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #72195a;
+  padding-top: 5px;
+  padding-left: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.App-darkTheme-header {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   padding-top: 5px;
   padding-left: 5px;
   text-align: center;
@@ -56,7 +66,7 @@
   padding-bottom: 5px;
   padding-left: 20px;
   justify-content: left;
-  background-color: #4c1036;
+  background-color: #72195a;
   height: min-content;
   text-align: center;
 }
@@ -76,6 +86,14 @@
   font-weight: bold;
 }
 
+.link-darkTheme:link {
+  text-transform: capitalize;
+  text-decoration: none;
+  padding-right: 5px;
+  color: white;
+  font-weight: bold;
+}
+
 .link:hover {
   background-color: #71a9f7;
   opacity: 0.3;
@@ -83,6 +101,10 @@
 
 .link:visited {
   color: #4c1036;
+}
+
+.link-darkTheme:visited {
+  color: white;
 }
 
 .loginBox {
@@ -116,15 +138,6 @@ h1 {
 
 h2 {
   text-transform: capitalize;
-  color: #72195a;
-}
-
-h3 {
-  color: #72195a;
-}
-
-h4 {
-  color: #72195a;
 }
 
 /* Black - 000000
@@ -170,4 +183,8 @@ input[type="text" i] {
 
 li {
   list-style-type: none;
+}
+
+form {
+  text-align: center;
 }

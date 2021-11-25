@@ -4,8 +4,8 @@ import { UserContext } from "../contexts/UserContext";
 const UserLoggedIn = () => {
   const { user, setUser } = useContext(UserContext);
   if (!user) {
-    return <div><h2>Welcome</h2>
-    <h6>Please enter your username to get started</h6></div>;
+    return <div><h3>Welcome</h3>
+</div>;
   }
   return (
     <div className="loginBox">
