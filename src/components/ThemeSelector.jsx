@@ -9,7 +9,7 @@ const ThemeSelector = () => {
     setDarkTheme((currTheme) => !currTheme);
   };
 
-  const darkThemeLabel = darkTheme ? "Dark" : "Light";
+  const darkThemeLabel = darkTheme ? "Light" : "Dark";
 
   return (
     <div>

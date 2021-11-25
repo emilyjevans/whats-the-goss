@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @prim: #53e3a6;
 
+
 .App {
   text-align: left;
   min-height: 100vh;
@@ -15,9 +16,24 @@
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   line-height: 1.5;
+  color: #72195a;
 }
-.dark-mode {
+
+.App-darkTheme {
+  text-align: left;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 0.5fr 20fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main";
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
   background-color: #72195a;
+  color: white;
 }
 
 .App-header {
@@ -76,7 +92,6 @@
 }
 
 p {
-  color: #72195a;
   font-size: small;
 }
 
