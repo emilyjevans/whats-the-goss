@@ -1,34 +1,38 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { sendComment } from "../utils/api";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 const PostComment = () => {
-  const [newComment, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState(false)
   const { user } = useContext(UserContext);
   let { article_id } = useParams();
 
-  useEffect(() => {}, [article_id, newComment]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendComment(article_id, user.username, newComment).catch((err) => {
+    setSubmitStatus(true);
+    sendComment(article_id, user.username, newComment)
+    .catch((err) => {
       console.dir(err);
     });
   };
 
+  if (submitStatus) {
+    return <div>
+      <p>Thank you for your comment</p>
+    </div>
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username: {user.username}
-        </label>
         <br />
         <label>
-          Enter comment here:
           <input
             type="text"
             name="comment"
+            placeholder="Enter your comment here"
             onChange={(e) => setNewComment(e.target.value)}
           />
         </label>

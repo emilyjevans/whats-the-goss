@@ -4,12 +4,11 @@ import { useContext, useState } from "react";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
-  const { setUser, setIsLoggedIn } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setUser({ username });
-    setIsLoggedIn(true);
   };
 
   return (

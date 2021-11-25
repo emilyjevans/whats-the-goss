@@ -28,13 +28,15 @@ const CommentSection = ({ article_id }) => {
       <h3>Comments</h3>
       <section>
         {comments.map((comment) => {
-            let d = new Date(comment.created_at);
-            let timeLabel = timeSince(d);
+          let d = new Date(comment.created_at);
+          let timeLabel = timeSince(d);
           return (
             <li key={comment.comment_id}>
               <h4>{comment.author}</h4>
               <p>{comment.body}</p>
-              <p>Created {timeLabel} ago</p>
+              <p>
+                Created <b>{timeLabel} ago</b>
+              </p>
               <p>Kudos: {comment.votes}</p>
               <button
                 disabled={!(comment.author === user.username)}

@@ -6,38 +6,43 @@ import Nav from "./components/Nav.jsx";
 import LoginForm from "./components/LoginForm";
 import SingleArticle from "./components/SingleArticle";
 import UserLoggedIn from "./components/UserLoggedIn";
+import ThemeSelector from "./components/ThemeSelector";
 import { useContext, useState } from "react";
 import { UserContext } from "./contexts/UserContext";
+import { ThemeContext } from "./contexts/ThemeContext";
 
 const RequireLogin = ({ children }) => {
-  const { isLoggedIn } = useContext(UserContext);
-  return isLoggedIn ? children : <LoginForm />;
+  const { user } = useContext(UserContext);
+  return user ? children : <LoginForm />;
 };
 
 function App() {
   const [topic, setTopic] = useState([]);
-  const [user, setUser] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   return (
-    <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
-      <div className="App">
-        <header className="App-header">
-          <h1>What's The Goss</h1> <UserLoggedIn />{" "}
-        </header>
-        <RequireLogin>
-          <Nav setTopic={setTopic} />
-          <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
-            <Route path="/articles" element={<Articles topic={null} />} />
-            <Route
-              path="/:topic"
-              element={<Articles topic={topic} setTopic={setTopic} />}
-            />
-            <Route path="/articles/:article_id" element={<SingleArticle />} />
-          </Routes>
-        </RequireLogin>
-      </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
+        <div className="App">
+          <header className="App-header">
+            <h1>What's The Goss</h1>
+            <UserLoggedIn /> <ThemeSelector />
+          </header>
+          <RequireLogin>
+            <Nav setTopic={setTopic} />
+            <Routes>
+              {/* <Route path="/" element={<Home />} /> */}
+              <Route path="/articles" element={<Articles topic={null} />} />
+              <Route
+                path="/:topic"
+                element={<Articles topic={topic} setTopic={setTopic} />}
+              />
+              <Route path="/articles/:article_id" element={<SingleArticle />} />
+            </Routes>
+          </RequireLogin>
+        </div>
+      </ThemeContext.Provider>
     </UserContext.Provider>
   );
 }

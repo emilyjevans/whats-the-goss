@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle, incVotes } from "../utils/api";
 import CommentSection from "./CommentSection";
-import PostComment from "./postComment";
+import PostComment from "./PostComment";
 import { UserContext } from "../contexts/UserContext";
 import timeSince from "../utils/timeSince";
 
@@ -27,12 +27,12 @@ const SingleArticle = () => {
     const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
 
     return (
-      <div>
+      <>
         <button onClick={toggleOpen}>
-          {isOpen ? "Hide comments" : "View comments"}
+          {isOpen ? "Hide comments" : `View ${article.comment_count} comments`}
         </button>
         {isOpen && children}
-      </div>
+      </>
     );
   };
 
@@ -42,12 +42,12 @@ const SingleArticle = () => {
     const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
 
     return (
-      <div>
+      <>
         <button onClick={toggleOpen}>
-          {isOpen ? "Hide" : "Post a comment"}
+          {isOpen ? "Hide comment box" : "Post a comment"}
         </button>
         {isOpen && children}
-      </div>
+      </>
     );
   };
 
@@ -68,18 +68,25 @@ const SingleArticle = () => {
 
   return (
     <main>
-      {console.log(article)}
       <h2>{article.title}</h2>
-      <p>{article.topic}</p>
-      <h3>Created by {article.author} {timeLabel} ago</h3>
+      {/* <p>{article.topic}</p> */}
+      <h3>
+        Created by {article.author} {timeLabel} ago
+      </h3>
+      <p>
+        Kudos: <b>{article.votes + sentVotes}</b>
+        <button
+          disabled={article.author === user.username || sentVotes === 1}
+          onClick={clickHandle}
+        >
+          Add kudos
+        </button>
+      </p>
       <p>{article.body}</p>
-      <p>Kudos: {article.votes + sentVotes}</p>
-      <button disabled={article.author === user.username} onClick={clickHandle}>
-        Add kudos
-      </button>
-      <p>Comment count: {article.comment_count}</p>
+
+      {/* <p>Comment count: {article.comment_count}</p> */}
       <PostCommentExpand>
-        <PostComment />
+        <PostComment/>
       </PostCommentExpand>
       <CommentSectionExpand>
         <CommentSection article_id={article_id} />

@@ -35,7 +35,7 @@ const Articles = () => {
               </Link>
               <p>
                 Created {timeLabel} ago by <b>{article.author}</b>  
-                <br/>Comments: {article.comment_count} Kudos:  {article.votes}
+                <br/>Comments: <b>{article.comment_count}</b> Kudos:  <b>{article.votes}</b>
               </p>
             </section>
           );

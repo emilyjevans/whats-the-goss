@@ -1,15 +1,24 @@
-Add username login x 
-Prevent deleting comments if you're not the user x 
+Add username login x
+Prevent deleting comments if you're not the user x
 Add logged in user in the corner x
 Add voting functionality x
 Disable voting on your own article/comment x
-Only one kudos allowed
-Log out button 
-Combine comment count and view comments into one button
-Combine kudos count and add kudos into one button 
+Only one kudos allowed x
+Log out button x
+Combine comment count and view comments into one button x
+Don't like my font x
+Am i duplicating logic - setUser/setIsLoggedIn??? x
+
+Comments are in wrong order? x 
+Fix the year(s) thing
+Open comments when you've posted a comment/clear comment box x
+
+Just all the alignment in general
+Loading on nav bar?
 
 Add new user endpoint
-Add increase votes on comment endpoint 
+Add increase votes on comment endpoint
 
-Add hover for navbar 
+Add hover for navbar
 
+Add dark theme?
