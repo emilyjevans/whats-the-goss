@@ -10,9 +10,9 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = (topic) => {
-  if (topic) {
-    return newsApi.get(`/articles?topic=${topic}`).then((res) => {
+export const getArticles = (topic, sort_by='created_at') => {
+  if (topic && sort_by) {
+    return newsApi.get(`/articles?topic=${topic}&sort_by=${sort_by}`).then((res) => {
       return res.data.articles;
     });
   }
@@ -41,11 +41,9 @@ export const deleteComment = (commentId) => {
 
 export const sendComment = (articleId, username, comment) => {
   const commentObj = { username: username, body: comment };
-  console.log(commentObj, "<<<< sending this");
   return newsApi
     .post(`/articles/${articleId}/comments`, commentObj)
     .then((res) => {
-      console.log(res);
       return res.status;
     });
 };

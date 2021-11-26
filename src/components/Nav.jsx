@@ -27,11 +27,9 @@ const Nav = () => {
       {topics.map((topic) => {
         const topicSlug = topic.slug[0].toUpperCase() + topic.slug.substring(1);
         return (
-          // <button class="mui-btn">
           <Link className="nav__link" key={topic.slug} to={`/${topic.slug}`}>
             {topicSlug}
           </Link>
-          // </button>
         );
       })}
     </nav>

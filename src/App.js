@@ -35,7 +35,8 @@ function App() {
           <RequireLogin>
             <Nav setTopic={setTopic} />
             <Routes>
-              <Route path="/articles" element={<Articles topic={null} />} />
+              <Route path="/" element={<Articles/>}/>
+              <Route path="/articles" element={<Articles topic={null}/>} />
               <Route
                 path="/:topic"
                 element={<Articles topic={topic} setTopic={setTopic} />}

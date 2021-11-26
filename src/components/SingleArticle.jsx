@@ -73,7 +73,6 @@ const SingleArticle = () => {
   return (
     <main>
       <h2>{article.title}</h2>
-      {/* <p>{article.topic}</p> */}
       <h3>
         Created by {article.author} {timeLabel} ago
       </h3>
@@ -87,8 +86,6 @@ const SingleArticle = () => {
         </button>
       </p>
       <p>{article.body}</p>
-
-      {/* <p>Comment count: {article.comment_count}</p> */}
       <PostCommentExpand>
         <PostComment/>
       </PostCommentExpand>
