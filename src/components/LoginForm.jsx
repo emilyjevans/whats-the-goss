@@ -1,6 +1,7 @@
 import React from "react";
 import { UserContext } from "../contexts/UserContext";
 import { useContext, useState } from "react";
+import { getUsers } from "../utils/api";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -8,8 +9,20 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUser({ username });
-    localStorage.setItem("username", username);
+ 
+    getUsers().then((users) => {
+      let usersArray = []
+      for (const item in users){
+        usersArray.push(users[item].username)
+      }
+      if (usersArray.includes(username)) {
+        setUser({ username });
+        localStorage.setItem("username", username);
+      }
+      else {
+        alert("Username does not exist, please try again")
+      }
+    })
   };
 
   return (

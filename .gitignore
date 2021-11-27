@@ -24,3 +24,6 @@ yarn-error.log*
 
 # to do 
 ToDo
+
+# Local Netlify folder
+.netlify

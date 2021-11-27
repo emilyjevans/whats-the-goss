@@ -12,7 +12,7 @@ const PostComment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitStatus(true);
-    sendComment(article_id, user.username, newComment)
+    sendComment(article_id, user, newComment)
     .catch((err) => {
       console.dir(err);
     });

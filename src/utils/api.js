@@ -48,7 +48,12 @@ export const sendComment = (articleId, username, comment) => {
 export const incVotes = (articleId) => {
   const votesObj = { inc_votes: 1 };
   return newsApi.patch(`/articles/${articleId}`, votesObj).then((res) => {
-    console.log(res);
     return res.status;
+  });
+};
+
+export const getUsers = () => {
+  return newsApi.get(`/users`).then((res) => {
+    return res.data.users;
   });
 };

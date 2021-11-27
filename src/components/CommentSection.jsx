@@ -39,7 +39,7 @@ const CommentSection = ({ article_id }) => {
               </p>
               <p>Kudos: <b>{comment.votes}</b></p>
               <button
-                disabled={!(comment.author === user.username)}
+                disabled={!(comment.author === user)}
                 onClick={() => {
                   deleteComment(comment.comment_id).then(() => {});
                 }}
