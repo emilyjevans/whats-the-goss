@@ -9,27 +9,31 @@ import SortBySelector from "./SortBySelector";
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setErr] = useState(null);
   const { darkTheme } = useContext(ThemeContext);
   let { topic } = useParams();
-  const [sortBy, setSortBy] = useState(null)
+  const [sortBy, setSortBy] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true);
     getArticles(topic, sortBy)
       .then((articles) => {
-        setArticles(articles);
         setIsLoading(false);
+        setArticles(articles);
       })
       .catch((err) => {
-        console.log(err);
+        setErr({ err });
       });
-  }, [topic, sortBy]);
+  }, [topic, sortBy, error]);
 
   if (isLoading) return <p>Loading...</p>;
 
+  if (error) return <p>{error}</p>;
+
   return (
     <main className="articles">
-        Sort by: <SortBySelector sortBy={sortBy} setSortBy={setSortBy}/>
-        <br/>
+      Sort by: <SortBySelector sortBy={sortBy} setSortBy={setSortBy} />
+      <br />
       {articles.map((article) => {
         let d = new Date(article.created_at);
         let timeLabel = timeSince(d);
@@ -41,7 +45,9 @@ const Articles = () => {
             >
               {article.title}
             </Link>
-            <p>Topic: {article.topic}<br/>
+            <p>
+              Topic: {article.topic}
+              <br />
               Created <b>{timeLabel}</b> ago by <b>{article.author}</b>
               <br />
               Comments: <b>{article.comment_count}</b> Kudos:{" "}

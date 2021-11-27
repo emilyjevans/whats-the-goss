@@ -16,7 +16,6 @@ const RequireLogin = ({ children }) => {
 };
 
 function App() {
-  const [topic, setTopic] = useState([]);
   const [user, setUser] = useState(null);
   const [darkTheme, setDarkTheme] = useState(false);
 
@@ -33,13 +32,12 @@ function App() {
             <UserLoggedIn /> <ThemeSelector />
           </header>
           <RequireLogin>
-            <Nav setTopic={setTopic} />
+            <Nav/>
             <Routes>
               <Route path="/" element={<Articles/>}/>
-              <Route path="/articles" element={<Articles topic={null}/>} />
               <Route
                 path="/:topic"
-                element={<Articles topic={topic} setTopic={setTopic} />}
+                element={<Articles />}
               />
               <Route path="/articles/:article_id" element={<SingleArticle />} />
             </Routes>

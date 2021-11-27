@@ -10,15 +10,12 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = (topic, sort_by='created_at') => {
-  if (topic && sort_by) {
-    return newsApi.get(`/articles?topic=${topic}&sort_by=${sort_by}`).then((res) => {
+export const getArticles = (topic, sort_by = "created_at") => {
+  return newsApi
+    .get("/articles", { params: { topic, sort_by } })
+    .then((res) => {
       return res.data.articles;
     });
-  }
-  return newsApi.get(`/articles`).then((res) => {
-    return res.data.articles;
-  });
 };
 
 export const getSingleArticle = (articleId) => {

@@ -9,12 +9,16 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setUser({ username });
+    localStorage.setItem("username", username);
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <label>Please enter your username to get started</label>
+        <br />
+        Note: to use app in testing, please use username <b>jessjelly</b>
+        <br />
         <input
           type="text"
           placeholder="Enter username"
