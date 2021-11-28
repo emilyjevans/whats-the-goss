@@ -22,7 +22,8 @@ const Articles = () => {
         setArticles(articles);
       })
       .catch((err) => {
-        setErr({ err });
+        setIsLoading(false)
+        setErr("Oops, this page does not exist!");
       });
   }, [topic, sortBy, error]);
 
@@ -37,6 +38,8 @@ const Articles = () => {
       {articles.map((article) => {
         let d = new Date(article.created_at);
         let timeLabel = timeSince(d);
+        const topicLabel =
+          article.topic[0].toUpperCase() + article.topic.substring(1);
         return (
           <section key={article.article_id}>
             <Link
@@ -46,7 +49,7 @@ const Articles = () => {
               {article.title}
             </Link>
             <p>
-              Topic: {article.topic}
+              Topic: <b>{topicLabel}</b>
               <br />
               Created <b>{timeLabel}</b> ago by <b>{article.author}</b>
               <br />

@@ -13,9 +13,6 @@ const Nav = () => {
         setTopics(topics);
         setIsLoading(false);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   if (isLoading) {

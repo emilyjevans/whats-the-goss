@@ -6,7 +6,7 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 0.5fr 20fr;
+  grid-template-rows: 0.1fr 0.1fr 2fr;
   grid-template-areas:
     "header"
     "nav"
@@ -23,7 +23,7 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1fr 0.5fr 20fr;
+  grid-template-rows: 1fr 0.2fr 50fr;
   grid-template-areas:
     "header"
     "nav"
@@ -36,26 +36,26 @@
 }
 
 .App-header {
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   padding-top: 5px;
   padding-left: 5px;
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: bold;
 }
 
 .App-darkTheme-header {
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   padding-top: 5px;
   padding-left: 5px;
   text-align: center;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: bold;
 }
 
@@ -109,7 +109,6 @@
 
 .loginBox {
   justify-content: right;
-  text-align: right;
   font-size: small;
 }
 
@@ -121,15 +120,14 @@ button:disabled {
   display: none;
 }
 
-.articles {
+/* .articles {
   padding-top: 10px;
   grid-area: main;
-}
+  max-width: 50pc;
+} */
 
 main {
-  padding-left: 1%;
-  padding-right: 1%;
-  vertical-align: top;
+max-width: 50%;
 }
 
 h1 {
@@ -139,12 +137,6 @@ h1 {
 h2 {
   text-transform: capitalize;
 }
-
-/* Black - 000000
-Crimson - D7263D
-KSU Purple - 592E83
-Fulvous - D98324
-Azure X 11 Web Color - EBFCFB */
 
 input[type="submit" i],
 button {
@@ -175,7 +167,7 @@ button {
 }
 
 input[type="text" i] {
-  width: 50%;
+  width: 15pc;
   padding: 12px 20px;
   margin: 8px 5px;
   box-sizing: border-box;
@@ -187,4 +179,17 @@ li {
 
 form {
   text-align: center;
+}
+
+.css-b62m3t-container {
+  width: 15pc;
+}
+
+section {
+  border-style: solid;
+  border-radius: 1pc;
+  border-width: 1px;
+  padding: 10px;
+  margin: 10px;
+  max-height: 10pc;
 }

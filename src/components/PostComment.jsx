@@ -6,17 +6,28 @@ import { UserContext } from "../contexts/UserContext";
 const PostComment = () => {
   const [newComment, setNewComment] = useState(null);
   const [submitStatus, setSubmitStatus] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setErr] = useState(null);
   const { user } = useContext(UserContext);
   let { article_id } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitStatus(true);
+    setIsLoading(true)
     sendComment(article_id, user, newComment)
+    .then(() => {
+      setIsLoading(false)
+      setSubmitStatus(true);
+    })
     .catch((err) => {
-      console.dir(err);
+      setIsLoading(false)
+      setErr("Cannot submit an empty comment")
     });
   };
+
+  if (error) return <p>{error}</p>
+
+  if(isLoading) return <p>Loading...</p>
 
   if (submitStatus) {
     return <div>

@@ -15,6 +15,10 @@ const RequireLogin = ({ children }) => {
   return user ? children : <LoginForm />;
 };
 
+const ErrorPage = () => {
+  return (<p> Sorry, looks like we don't have anything here! </p>)
+}
+
 function App() {
   const [user, setUser] = useState(null);
   const [darkTheme, setDarkTheme] = useState(false);
@@ -34,6 +38,7 @@ function App() {
           <RequireLogin>
             <Nav/>
             <Routes>
+            <Route path="*" element = {<ErrorPage/>} />
               <Route path="/" element={<Articles/>}/>
               <Route
                 path="/:topic"

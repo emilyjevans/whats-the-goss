@@ -10,16 +10,21 @@ const SingleArticle = () => {
   let { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [sentVotes, setSentVotes] = useState(0);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const [err, setErr] = useState(null);
   const { user } = useContext(UserContext);
 
   useEffect(
     () =>
-      getSingleArticle(article_id).then((article) => {
-        setArticle(article);
-        setIsLoading(false);
-      }),
+      getSingleArticle(article_id)
+        .then((article) => {
+          setArticle(article);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setErr("Oops, this page does not exist!");
+        }),
     [article_id]
   );
 
@@ -31,7 +36,7 @@ const SingleArticle = () => {
     return (
       <>
         <button onClick={toggleOpen}>
-          {isOpen ? "Hide comments" : `View ${article.comment_count} comments`}
+          {isOpen ? "Hide comments" : `View comments`}
         </button>
         {isOpen && children}
       </>
@@ -65,7 +70,7 @@ const SingleArticle = () => {
 
   if (err) return <p>{err}</p>;
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <p>Loading...</p>;
 
   let d = new Date(article.created_at);
   let timeLabel = timeSince(d);
@@ -87,7 +92,7 @@ const SingleArticle = () => {
       </p>
       <p>{article.body}</p>
       <PostCommentExpand>
-        <PostComment/>
+        <PostComment />
       </PostCommentExpand>
       <CommentSectionExpand>
         <CommentSection article_id={article_id} />
