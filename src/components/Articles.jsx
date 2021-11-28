@@ -33,8 +33,9 @@ const Articles = () => {
 
   return (
     <main className="articles">
+      <div className="sortBy">
       Sort by: <SortBySelector sortBy={sortBy} setSortBy={setSortBy} />
-      <br />
+      </div>
       {articles.map((article) => {
         let d = new Date(article.created_at);
         let timeLabel = timeSince(d);
