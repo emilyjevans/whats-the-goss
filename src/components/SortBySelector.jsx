@@ -4,9 +4,9 @@ const options = [
   { value: "created_at", label: "Created" },
   { value: "comment_count", label: "Number of comments" },
   { value: "votes", label: "Kudos" },
-  { value: "author", label: "Author" },
-  { value: "title", label: "Title" },
-  { value: "topic", label: "Topic"}
+  // { value: "author", label: "Author" },
+  // { value: "title", label: "Title" },
+  // { value: "topic", label: "Topic"}
 ];
 
 const SortBySelector = ({ sortBy, setSortBy }) => {
