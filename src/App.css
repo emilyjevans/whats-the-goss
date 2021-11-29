@@ -6,7 +6,7 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 0.1fr 0.1fr 2fr;
+  grid-template-rows: 0.5fr 0.1fr 10fr;
   grid-template-areas:
     "header"
     "nav"
@@ -23,7 +23,7 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 0.1fr 0.1fr 2fr;
+  grid-template-rows: 0.5fr 0.1fr 10fr;
   grid-template-areas:
     "header"
     "nav"
@@ -90,17 +90,27 @@
   font-weight: bold;
 }
 
-.link:hover {
-  background-color: #71a9f7;
-  opacity: 0.3;
-}
-
 .link:visited {
-  color: #4c1036;
+  color: #4c1036
 }
 
 .link-darkTheme:visited {
   color: white;
+}
+
+.link:hover {
+  border-radius: 1pc;
+  background-color: #4c1036;
+  color: white;
+  padding: 0px;
+  height: inherit
+}
+
+.link-darkTheme:hover {
+  border-radius: 1pc;
+  background-color: #e5fcff;
+  color: #4c1036;
+  padding: 0px;
 }
 
 .loginBox {
@@ -129,6 +139,7 @@ main {
   grid-area: "sorter";
   width: 100%;
   text-align: center;
+  margin: 10px;
 }
 
 .articles {
@@ -137,6 +148,7 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: space-around;
+  max-height: 80vh;
 }
 
 h1 {
@@ -202,6 +214,7 @@ section {
   border-width: 1px;
   padding: 10px;
   margin: 10px;
-  max-height: 10pc;
+  /* max-height: 10pc; */
   width: 50pc;
+  max-width: 80vw;
 }

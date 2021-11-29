@@ -46,7 +46,7 @@ const PostComment = () => {
             placeholder="Enter your comment here"
             onChange={(e) => setNewComment(e.target.value)}
           />
-        </label>
+        </label><br/>
         <input type="submit" value="Submit" />
       </form>
     </div>

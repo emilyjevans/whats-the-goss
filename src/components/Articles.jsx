@@ -42,13 +42,14 @@ const Articles = () => {
         const topicLabel =
           article.topic[0].toUpperCase() + article.topic.substring(1);
         return (
+          <Link key={article.article_id}
+          className={`${darkTheme ? "link-darkTheme" : "link"}`}
+          to={`/articles/${article.article_id}`}
+        >
           <section key={article.article_id}>
-            <Link
-              className={`${darkTheme ? "link-darkTheme" : "link"}`}
-              to={`/articles/${article.article_id}`}
-            >
+
               {article.title}
-            </Link>
+           
             <p>
               Topic: <b>{topicLabel}</b>
               <br />
@@ -58,6 +59,7 @@ const Articles = () => {
               <b>{article.votes}</b>
             </p>
           </section>
+          </Link>
         );
       })}
     </main>
