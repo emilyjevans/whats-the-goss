@@ -74,6 +74,14 @@
   font-weight: bold;
 }
 
+.nav__link:active {
+  border-bottom: 3px solid white;
+}
+
+.nav__link:hover {
+  border-bottom: 3px solid white;
+}
+
 .link:link {
   text-transform: capitalize;
   text-decoration: none;
@@ -91,7 +99,7 @@
 }
 
 .link:visited {
-  color: #4c1036
+  color: #4c1036;
 }
 
 .link-darkTheme:visited {
@@ -103,7 +111,7 @@
   background-color: #4c1036;
   color: white;
   padding: 0px;
-  height: inherit
+  height: inherit;
 }
 
 .link-darkTheme:hover {
@@ -206,6 +214,7 @@ form {
   width: 10pc;
   margin-right: auto;
   margin-left: auto;
+  color: grey;
 }
 
 section {
