@@ -6,21 +6,19 @@ The frontend project was bootstrapped with [Create React App](https://github.com
 
 The backend was built using an express server. 
 
-## Link to hosted version
+## Links
 
-[https://mystifying-einstein-e278c9.netlify.app/cooking]
+[Hosted version](https://mystifying-einstein-e278c9.netlify.app)
 
-## Link to the back-end repository
+[Back-end repository](https://github.com/emilyjevans/nc_news)
 
-[https://github.com/emilyjevans/nc_news]
+[Hosted back-end API](https://whats-the-goss.herokuapp.com/api/)
 
-## Link to the hosted back-end project
+## Pre requisites
 
-[https://whats-the-goss.herokuapp.com/api/]
+Node.js is required as the runtime environment for the project. Details on how to install node can be found [here](https://nodejs.org/en/download/current/).
 
-## Minimum versions required
-
-node v16
+Minimum version recommended for running this project: Node v16
 
 ## Instructions for how to run the project locally
 
