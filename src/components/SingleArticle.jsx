@@ -28,6 +28,10 @@ const SingleArticle = () => {
     [article_id]
   );
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const CommentSectionExpand = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -78,29 +82,33 @@ const SingleArticle = () => {
   return (
     <main>
       <center>
-      <h2>{article.title}</h2>
-      <h3>
-        Created by {article.author} {timeLabel} ago
-      </h3>
-      <p>
-         Kudos: <b>{article.votes + sentVotes}</b> <br/><br/>
-        <button
-          disabled={article.author === user.username || sentVotes === 1}
-          onClick={clickHandle}
-        >
-          Add kudos
-        </button>
+        <h2>{article.title}</h2>
+        <h3>
+          Created by {article.author} {timeLabel} ago
+        </h3>
+        <p>
+          Kudos: <b>{article.votes + sentVotes}</b> <br />
+          <br />
+          <button
+            disabled={article.author === user.username || sentVotes === 1}
+            onClick={clickHandle}
+          >
+            Add kudos
+          </button>
         </p>
-        </center>
-      
+      </center>
+
       <p>{article.body}</p>
-      <center><PostCommentExpand>
-        <PostComment />
-      </PostCommentExpand>
-      <br/><br/>
-      <CommentSectionExpand>
-        <CommentSection article_id={article_id} />
-      </CommentSectionExpand></center>
+      <center>
+        <PostCommentExpand>
+          <PostComment />
+        </PostCommentExpand>
+        <br />
+        <br />
+        <CommentSectionExpand>
+          <CommentSection article_id={article_id} />
+        </CommentSectionExpand>
+      </center>
     </main>
   );
 };
