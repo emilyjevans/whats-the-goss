@@ -4,7 +4,7 @@
 
 This project is a simple news website where users can view articles, filter by topic, post and delete comments and add kudos to their favourite article. Users are required to login to view and interact with the content. Users also have the option to use a light or dark mode. 
 
-The frontend project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The frontend project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and styled using CSS. 
 
 The backend was built using an express server and PostgreSQL. 
 
